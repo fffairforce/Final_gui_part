@@ -1,0 +1,8 @@
+pep8
+numpy
+PyQt5
+matplotlib
+scikit-image
+PySide2
+ui
+requests
