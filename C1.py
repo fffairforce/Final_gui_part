@@ -7,7 +7,8 @@ Created on Fri Apr 19 16:02:29 2019
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QMainWindow
- 
+from PyQt5.QtCore import pyqtSlot
+import client
  
 class Ui_wnd_main(QMainWindow):
     def __init__(self):
@@ -84,8 +85,17 @@ class Ui_wnd_main(QMainWindow):
  
     def setup_button_block(self):
         self.btn_upload.clicked.connect(self.callback)
+        self.btn_contrast_invert.clicked.connect(self.img_contrast_invert)
+        self.btn_display.clicked.connect(self.img_display)
+        self.btn_display_hist.clicked.connect(self.img_display_hist)
         self.btn_compare.clicked.connect(self.img_compare)
- 
+        self.btn_equalize_hist.clicked.connect(self.img_equalize_hist)
+        self.btn_contrast_stretch.clicked.connect(self.img_contrast_stretch)
+        self.btn_log_compress.clicked.connect(self.img_log_compress)
+        self.btn_dload_jpeg.clicked.connect(self.img_dload_jpeg)
+        self.btn_dload_tiff.clicked.connect(self.img_dload_tiff)
+        self.btn_dload_png.clicked.connect(self.img_dload_png)
+
     def retranslateUi(self, wnd_main):
         _translate = QtCore.QCoreApplication.translate
         wnd_main.setWindowTitle(_translate("wnd_main", "MainWindow"))
@@ -118,16 +128,54 @@ class Ui_wnd_main(QMainWindow):
         self.btn_dload_tiff.setText(_translate("wnd_main", "Download TIFF"))
         self.btn_dload_png.setText(_translate("wnd_main", "Download PNG"))
         self.btn_upload.setText(_translate("wnd_main", "Upload"))
- 
+   
+    @pyqtSlot()
     def callback(self):
         indexes = self.tbl_images.selectionModel().selectedRows()
         for index in sorted(indexes):
             print('Row %d is selected' % index.row())
         # linked to database ID TBA
-        
+
+    @pyqtSlot()      
     def img_compare(self):
          print("compare_algorithm")
          self.next = img_show_wnd
+
+    @pyqtSlot()      
+    def img_contrast_invert(self):
+        pass
+
+    @pyqtSlot()
+    def img_equalize_hist(self):
+        pass
+    
+    @pyqtSlot()      
+    def img_display(self):
+        pass
+    
+    @pyqtSlot()      
+    def img_display_hist(self):
+        pass
+    
+    @pyqtSlot()      
+    def img_contrast_stretch(self):
+        pass
+    
+    @pyqtSlot()      
+    def img_log_compress(self):
+        pass
+    
+    @pyqtSlot()      
+    def img_dload_jpeg(self):
+        pass
+    
+    @pyqtSlot()       
+    def img_dload_tiff(self):
+        pass
+
+    @pyqtSlot()         
+    def img_dload_png(self):
+        pass
 
 class img_show_wnd(QMainWindow):
     
